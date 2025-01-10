@@ -32,10 +32,13 @@ Use the following `curl` command to send a transcription request:
 
 ```sh
 curl -X 'POST' \
-  'http://localhost:8000/transcribe/' \
+  'http://0.0.0.0:8000/transcribe/' \
   -H 'accept: application/json' \
-  -H 'Content-Type: multipart/form-data' \
-  -F 'file=@/path/to/your/audiofile'
+  -H 'Content-Type: application/json' \
+  -d '{
+  "url": "https://github.com/johnidm/youtube-videos-code-examples/raw/refs/heads/main/speech-to-text-service/audio.mp3",
+  "language": "en"
+}'
 ```
 
 #### Check the transcription status
