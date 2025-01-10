@@ -15,7 +15,7 @@ celery_app = Celery(
 def transcribe(url, language):
     start_time = time.perf_counter()
 
-    model_size = "small" # https://github.com/SYSTRAN/faster-whisper?tab=readme-ov-file#model-conversion
+    model_size = "small"  # https://github.com/SYSTRAN/faster-whisper?tab=readme-ov-file#model-conversion
     model = WhisperModel(model_size, device="cpu", compute_type="float32")
 
     response = requests.get(url)
@@ -25,7 +25,10 @@ def transcribe(url, language):
         temp_file.write(response.content)
         print(temp_file.name)
         segments, _ = model.transcribe(
-            temp_file.name, language=language, vad_filter=True, no_repeat_ngram_size=2
+            temp_file.name,
+            language=language,
+            vad_filter=True,
+            no_repeat_ngram_size=2,
         )
 
         transcript = [
