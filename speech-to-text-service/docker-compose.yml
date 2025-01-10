@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  redis:
+    image: "redis:alpine"
+    container_name: redis
+    ports:
+      - "6379:6379"
+
+  flower:
+    image: "mher/flower"
+    container_name: flower
+    ports:
+      - "5555:5555"
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+
+  worker:
+    build:
+      context: ./
+      dockerfile: ./worker/Dockerfile
+    container_name: worker
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+    depends_on:
+      - redis
+      - flower
+
+  api:
+    build:
+      context: ./
+      dockerfile: ./api/Dockerfile
+    container_name: api
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+      - flower
