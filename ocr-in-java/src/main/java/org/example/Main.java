@@ -12,13 +12,22 @@ public class Main {
     public static void main(String[] args) {
         // On Mac OS, solve the 'libtesseract.dylib not found' error.
         // https://github.com/nguyenq/tess4j/issues/194
+        if (System.getProperty("os.name").toLowerCase().contains("mac")) {
+            System.setProperty("jna.library.path", "/opt/homebrew/Cellar/tesseract/5.5.0/lib");
+        }
         System.setProperty("jna.library.path", "/opt/homebrew/Cellar/tesseract/5.5.0/lib");
 
         Tesseract tesseract = new Tesseract();
 
         // Set the path to the Tesseract data directory
         // Replace this with the path where you stored the language data files
-        tesseract.setDatapath("/opt/homebrew/Cellar/tesseract/5.5.0/share/tessdata/");
+        String datapath;
+        if (System.getProperty("os.name").toLowerCase().contains("mac")) {
+            datapath = "/opt/homebrew/Cellar/tesseract/5.5.0/share/tessdata/";    
+        } else {
+            datapath = "/usr/share/tesseract-ocr/4.00/tessdata";
+        }
+        tesseract.setDatapath(datapath);
 
         // Perform OCR on the image
         tesseract.setLanguage("eng");
