@@ -1,0 +1,33 @@
+# Ignore node_modules directory
+node_modules/
+
+# Ignore log files
+*.log
+
+# Ignore build directories
+dist/
+build/
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore environment variable files
+.env
+
+# Ignore IDE-specific files
+.vscode/
+.idea/
+
+# Ignore compiled files
+*.out
+*.class
+*.pyc
+*.o
+
+# Ignore coverage reports
+coverage/
+*.lcov
+
+# Ignore dependency directories
+vendor/
