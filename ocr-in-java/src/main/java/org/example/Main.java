@@ -7,9 +7,10 @@ import org.example.service.PdfParser;
 import org.example.service.PdfParserPDFBoxService;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
 
     public static void saveTextToFile(String text, String outputPath) {
@@ -19,10 +20,23 @@ public class Main {
             e.printStackTrace();
         }
     }
-    public static void main(String[] args) throws Exception {
-        // String filePath = "/Users/johnimarangon/Projects/youtube-videos-code-examples/ocr-in-java/contrato.pdf";
-        String filePath = "/Users/johnimarangon/Projects/youtube-videos-code-examples/ocr-in-java/contarto-imagem.pdf";
 
+    public static List<String> listPDFFiles(String directoryPath) {
+        List<String> pdfFiles = new ArrayList<>();
+        File directory = new File(directoryPath);
+        if (directory.exists() && directory.isDirectory()) {
+            File[] files = directory.listFiles((_, name) -> name.toLowerCase().endsWith(".pdf"));
+            if (files != null) {
+                for (File file : files) {
+                    pdfFiles.add(file.getAbsolutePath());
+                }
+            }
+        }
+        return pdfFiles;
+    }
+
+    public static String convertoToText(String filePath) throws Exception {
+        Logging.success(filePath);
         PdfParser pdf = new PdfParserPDFBoxService();
         String text = pdf.parse(filePath);
         if (text.trim().isEmpty()) {
@@ -30,7 +44,16 @@ public class Main {
             text = ocr.parse(filePath);
         }
         Logging.print(text);
-        String outputPath = "/Users/johnimarangon/Projects/youtube-videos-code-examples/ocr-in-java/output.txt";
-        saveTextToFile(text, outputPath);
+        return text;
+    }
+
+    public static void main(String[] args) throws Exception {
+        String directoryPath = "/home/johni.marangon@softplan.com.br/Projects/sienge-ai-instrucoes/documents/";
+        List<String> pdfFiles = listPDFFiles(directoryPath);
+        for (String pdfFile : pdfFiles) {
+            String text = convertoToText(pdfFile);
+            String outputPath = pdfFile.replace(".pdf", ".txt");
+            saveTextToFile(text, outputPath);
+        }
     }
 }
