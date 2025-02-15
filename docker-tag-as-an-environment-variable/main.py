@@ -1,7 +1,6 @@
-from http.server import HTTPServer, BaseHTTPRequestHandler
 import json
 import os
-
+from http.server import BaseHTTPRequestHandler, HTTPServer
 
 APP_VERSION = os.getenv("APP_VERSION", "no version")
 

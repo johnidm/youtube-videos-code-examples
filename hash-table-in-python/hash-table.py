@@ -2,12 +2,9 @@
 def simple_hash(key):
     return hash(key) % 10
 
+
 # Creating a hash table using a dictionary
-hash_table = {
-    "name": "Alice",
-    "age": 30,
-    "city": "New York"
-}
+hash_table = {"name": "Alice", "age": 30, "city": "New York"}
 
 # Accessing elements
 print(hash_table["name"])  # Output: Alice
@@ -21,6 +18,7 @@ del hash_table["age"]
 # Iterating through the hash table
 for key, value in hash_table.items():
     print(f"{key}: {value}")
+
 
 # Implementing a Hash Table from Scratch
 class HashTable:
@@ -58,6 +56,7 @@ class HashTable:
         for i, bucket in enumerate(self.table):
             print(f"Bucket {i}: {bucket}")
 
+
 # Example Usage
 hash_table = HashTable()
 
@@ -74,4 +73,3 @@ hash_table.delete("age")
 
 # Display the hash table
 hash_table.display()
-

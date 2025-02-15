@@ -1,13 +1,12 @@
 import streamlit as st
-
 from services import (
+    ASSISTANT,
+    USER,
+    Message,
     get_assistant_id,
+    get_chat_response,
     get_history_messages,
     get_thread_id,
-    get_chat_response,
-    Message,
-    USER,
-    ASSISTANT,
 )
 
 st.set_page_config(page_title="OpenAI Chat", page_icon=":tomato:")

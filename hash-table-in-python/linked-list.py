@@ -1,4 +1,4 @@
-from typing import TypeVar, Generic
+from typing import Generic, TypeVar
 
 T = TypeVar("T")
 
@@ -43,13 +43,13 @@ class LinkedList(Generic[T]):
 
         return slow
 
-    def merge(self, l):
-        current: Node[T] = l.head
+    def merge(self, link: "LinkedList[T]"):
+        current: Node[T] = link.head
         while current.next:
             current = current.next
 
         current.next = self.head
-        self.head = l.head
+        self.head = link.head
 
     def traverse(self):
         current: Node[T] = self.head

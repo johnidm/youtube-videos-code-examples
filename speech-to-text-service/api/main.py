@@ -1,8 +1,7 @@
-from fastapi import FastAPI
-from pydantic import BaseModel
 from celery import Celery, uuid
 from celery.result import AsyncResult
-
+from fastapi import FastAPI
+from pydantic import BaseModel
 
 app = FastAPI()
 

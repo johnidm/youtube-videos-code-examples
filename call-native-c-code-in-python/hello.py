@@ -9,7 +9,7 @@ libhello.hello_world()
 
 # Define the argument and return types of the C function
 libhello.add.argtypes = (ctypes.c_int, ctypes.c_int)  # Input arguments are two integers
-libhello.add.restype = ctypes.c_int  # Return type is an 
+libhello.add.restype = ctypes.c_int  # Return type is an
 
 # Call the add function
 result = libhello.add(5, 7)

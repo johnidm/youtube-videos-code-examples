@@ -2,6 +2,7 @@
 DB-API 2.0 interface for SQLite databases documentation
 https://docs.python.org/3/library/sqlite3.html
 """
+
 import sqlite3
 
 database_filename = "example.db"

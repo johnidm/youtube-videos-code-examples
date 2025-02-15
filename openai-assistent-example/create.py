@@ -1,9 +1,10 @@
-from openai import OpenAI
 import os
 
+from openai import OpenAI
 
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
+ASSISTENT_ID = "assistant-id"
 
 description = """
 You are a PostgreSQL expert and can answer any question in a
@@ -49,7 +50,7 @@ print(file_batch.status)
 print(file_batch.file_counts)
 
 assistant = client.beta.assistants.update(
-    assistant_id=ID,
+    assistant_id=ASSISTENT_ID,
     tool_resources={"file_search": {"vector_store_ids": [vector_store.id]}},
 )
 

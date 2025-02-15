@@ -1,8 +1,9 @@
 import time
+from tempfile import NamedTemporaryFile
+
+import requests
 from celery import Celery
 from faster_whisper import WhisperModel
-import requests
-from tempfile import NamedTemporaryFile
 
 celery_app = Celery(
     broker="redis://localhost:6379/0",

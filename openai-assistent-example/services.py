@@ -1,9 +1,9 @@
-import openai
-import time
-from functools import lru_cache
-from dataclasses import dataclass
 import os
+import time
+from dataclasses import dataclass
+from functools import lru_cache
 
+import openai
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 

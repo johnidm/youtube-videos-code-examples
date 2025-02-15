@@ -19,4 +19,3 @@ def is_two_sun(numbers: list[int], target: int) -> bool:
 
 
 print(f"Is two sun: {(is_two_sun(numbers, target))}")
-
