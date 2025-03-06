@@ -1,4 +1,32 @@
+"""
+What is a Hash Table?
+A hash table is a data structure that stores key-value pairs.
+It uses a hash function to compute an index (or hash code) into an array of buckets or slots,
+from which the desired value can be found. This allows for efficient insertion,
+deletion, and lookup operations, typically in O(1) time on average.
+
+Pros and Cons of Hash Tables
+Pros:
+- Fast Lookups: Average time complexity for search, insertion, and deletion operations is O(1).
+- Dynamic Storage: Can dynamically resize to accommodate growing data.
+- Efficient Use of Memory: Only stores data for keys that exist.
+Cons:
+- Hash Collisions: When two keys hash to the same index, additional mechanisms (e.g., chaining or open addressing) are required, which can degrade performance.
+- No Ordering: Does not maintain the order of elements.
+- Memory Overhead: Requires extra memory for storing the hash table and handling collisions.
+
+Key Features in the Implementation:
+- Hash Function: Maps keys to bucket indices.
+- Chaining: Resolves collisions using linked lists (in this case, lists of lists).
+- Insert, Search, Delete: Demonstrates key operations in a hash table.
+
+This implementation showcases the inner workings of hash tables, allowing
+you to see how hash functions and collision handling play a crucial role.
+"""
+
+
 # Hash Function
+# A function that maps input data (key) to a fixed-size integer value (hash code). Example:
 def simple_hash(key):
     return hash(key) % 10
 
