@@ -15,6 +15,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -58,7 +59,7 @@ public class WebFluxController {
         System.out.println("Java Version: " + System.getProperty("java.version"));
         System.out.println("Responses size: " + results.size());
 
-        return ResponseEntity.ok(results);
+        return ResponseEntity.status(HttpStatus.CREATED).body(results);
     }
 
     private Mono<String> generateResponseAsync(String prompt) {
