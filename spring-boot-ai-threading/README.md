@@ -1,6 +1,42 @@
-# AI Threading
+# AI Prompts Concurrency Example
 
 An example of how to use non-blocking requests to process multiple prompts concurrently.
+
+## Benchmark Results
+
+These are the results of both approaches running the same set of prompts.
+
+- Execution Time (s): Total time taken by the controller function endpoint.
+- Response Time (s): Total time taken for the endpoint request round trip.
+
+### SpringAI
+
+See the request in [SpringAI Request Example](#springai-request-example).
+
+Sequence | Execution Time (s) | Response Time (s)
+--- | --- | ---
+1 | 3.964 | 4.173
+2 | 4.827 | 4.927 
+3 | 6.474 | 6.592 
+4 | 3.904 | 3.999 
+5 | 3.230 | 3.305 
+
+### WebFlux
+
+See the request in [WebFlux Request Example](#webflux-request-example).
+
+Sequence | Execution Time (s) | Response Time (s)
+--- | --- | ---
+1 | 3.668 | 3.873
+2 | 3.029 | 3.122 
+3 | 3.519 | 3.599 
+4 | 5.881 | 5.974 
+5 | 2.795 | 2.877 
+
+### Conclusion
+
+WebFlux is 10% faster than SpringAI for this use case. This means that both approaches are efficient in terms of response time.
+We can choose the approach that best fits our specific needs.
 
 ## Docker 
 
@@ -105,39 +141,3 @@ time curl -X 'POST' \
     "Which city is known as the Big Apple?"
 ]'
 ```
-
-## Benchmark Results
-
-These are the results of both approaches running the same set of prompts.
-
-- Execution Time (s): Total time taken by the controller function endpoint.
-- Response Time (s): Total time taken for the endpoint request round trip.
-
-### SpringAI
-
-See the request in [SpringAI Request Example](#springai-request-example).
-
-Sequence | Execution Time (s) | Response Time (s)
---- | --- | ---
-1 | 3.964 | 4.173
-2 | 4.827 | 4.927 
-3 | 6.474 | 6.592 
-4 | 3.904 | 3.999 
-5 | 3.230 | 3.305 
-
-### WebFlux
-
-See the request in [WebFlux Request Example](#webflux-request-example).
-
-Sequence | Execution Time (s) | Response Time (s)
---- | --- | ---
-1 | 3.668 | 3.873
-2 | 3.029 | 3.122 
-3 | 3.519 | 3.599 
-4 | 5.881 | 5.974 
-5 | 2.795 | 2.877 
-
-### Conclusion
-
-WebFlux is 10% faster than SpringAI for this use case. This means that both approaches are efficient in terms of response time.
-We can choose the approach that best fits our specific needs.
