@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>spring-boot-ai-threading</artifactId>
+	<artifactId>spring-boot-ai-concurrency</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-boot-ai-threading</name>
-	<description>Demo project for Spring Boot - AI Threading</description>
+	<name>Spring Boot AI Concurrency</name>
+	<description>Demo project for Spring Boot - AI Concurrency</description>
 	<url/>
 	<licenses>
 		<license/>

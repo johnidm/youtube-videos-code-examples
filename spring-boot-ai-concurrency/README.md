@@ -1,4 +1,4 @@
-# AI Prompts Concurrency Example
+# Spring Boot AI Concurrency Example
 
 An example of how to use non-blocking requests to process multiple prompts concurrently.
 
