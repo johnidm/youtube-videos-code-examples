@@ -1,5 +1,7 @@
+# MCP Server written in Java
 
-https://github.com/danvega/javaone-mcp
+
+##### Running the project:
 
 ```
 mvn clean package
@@ -9,10 +11,13 @@ mvn clean package
 java -jar target/mcp-demo-1.0-SNAPSHOT.jar
 ```
 
+##### Inspect the project:
+
 ```
 npx @modelcontextprotocol/inspector java -jar target/mcp-demo-1.0-SNAPSHOT.jar
 ```
 
+##### Add to Claude's config:
 
 ```
 {
@@ -25,3 +30,7 @@ npx @modelcontextprotocol/inspector java -jar target/mcp-demo-1.0-SNAPSHOT.jar
   }
 }
 ```
+
+#### Reference
+
+https://github.com/danvega/javaone-mcp
