@@ -4,7 +4,7 @@ An example of how to use non-blocking requests to process multiple prompts concu
 
 ## Benchmark Results
 
-These are the results of both approaches running the same set of prompts.
+These are the results of both approaches running the same set of **24 questions** prompts.
 
 - Execution Time (s): Total time taken by the controller function endpoint.
 - Response Time (s): Total time taken for the endpoint request round trip.
