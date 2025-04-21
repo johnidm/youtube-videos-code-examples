@@ -1,4 +1,4 @@
-package com.example.spring_boot_ai_threading.controllers;
+package com.example.app.controllers;
 
 import java.time.Duration;
 import java.time.Instant;

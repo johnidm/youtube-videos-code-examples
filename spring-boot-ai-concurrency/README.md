@@ -50,10 +50,10 @@ docker compose up --build
 
 ```
 # Build the Docker image
-docker build -t spring-boot-ai-threading .
+docker build -t spring-boot-ai-concurrency .
 
 # Run the container with your API key
-docker run -p 8080:8080 -e OPENAI_API_KEY=your_api_key_here spring-boot-ai-threading
+docker run -p 8080:8080 -e OPENAI_API_KEY=your_api_key_here spring-boot-ai-concurrency
 ```
 
 ## Run the application

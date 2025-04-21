@@ -1,13 +1,13 @@
-package com.example.spring_boot_ai_threading;
+package com.example.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringBootAiThreadingApplication {
+public class SpringBootAIApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootAiThreadingApplication.class, args);
+		SpringApplication.run(SpringBootAIApplication.class, args);
 	}
 
 }

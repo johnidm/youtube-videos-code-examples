@@ -1,4 +1,4 @@
-package com.example.spring_boot_ai_threading.config;
+package com.example.app.config;
 
 import io.swagger.v3.oas.models.ExternalDocumentation;
 import io.swagger.v3.oas.models.OpenAPI;
@@ -13,10 +13,10 @@ import org.springframework.context.annotation.Configuration;
 public class SwaggerConfig {
 
     @Bean
-    public OpenAPI springBootAiThreadingOpenAPI() {
+    public OpenAPI springBootAIOpenAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("Spring Boot AI Threading API")
+                        .title("Spring Boot AI API")
                         .description("Demo project for Spring Boot, WebFlux, and Spring AI integration with Swagger UI.")
                         .version("v1.0.0")
                         .contact(new Contact().name("Your Name").email("your.email@example.com"))
