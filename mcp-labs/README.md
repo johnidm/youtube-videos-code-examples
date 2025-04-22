@@ -14,6 +14,8 @@ Each implementation provides the same functionality: a tool called `fetch_cep` t
 
 The data fetched is from [BrasilAPI](https://brasilapi.com.br/).
 
+All projects were written using the [oficial SDKs](https://modelcontextprotocol.io/sdk/java/mcp-overview). For production projects, you should use a framework or library that supports MCP.
+
 ## Example of MCP Server in Action
 
 - What is the name of the city with CEP 89900000?
