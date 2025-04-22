@@ -6,13 +6,18 @@ This repository contains examples of Model Context Protocol (MCP) server impleme
 
 MCP (Model Context Protocol) is a protocol that enables AI models to interact with external tools and services. This repository demonstrates how to implement MCP servers in:
 
-- Python
-- Java
-- C#
+- Python : `python` folder
+- Java : `java` folder
+- C# : `csharp` folder
 
 Each implementation provides the same functionality: a tool called `fetch_cep` that retrieves information about a Brazilian postal code (CEP).
 
-## Usage
+## Example of MCP Server in Action
+
+- What is the name of the city with CEP 89900000?
+- Give me the address of CEP 89909000 and open in a map
+
+## Configuration
 
 Change the path to match your local setup.
 
@@ -96,8 +101,3 @@ npx @modelcontextprotocol/inspector java -jar java/target/mcp-demo-1.0-SNAPSHOT.
 ```bash
 npx @modelcontextprotocol/inspector dotnet run --project csharp/csharp.csproj --no-build
 ```
-
-## Example of MCP Server in Action
-
-- What is the name of the city with CEP 89900000?
-- Give me the address of CEP 89909000 and open in a map
