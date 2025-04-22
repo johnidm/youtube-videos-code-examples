@@ -2,6 +2,8 @@
 
 This repository contains examples of Model Context Protocol (MCP) server implementations in different programming languages. Each implementation demonstrates how to create an MCP server that provides a tool for fetching Brazilian postal code (CEP) data.
 
+Looking to understand more about MCP, check out the [MCP.md](MCP.md) file.
+
 ## Overview
 
 MCP (Model Context Protocol) is a protocol that enables AI models to interact with external tools and services. This repository demonstrates how to implement MCP servers in:
