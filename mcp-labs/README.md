@@ -12,6 +12,8 @@ MCP (Model Context Protocol) is a protocol that enables AI models to interact wi
 
 Each implementation provides the same functionality: a tool called `fetch_cep` that retrieves information about a Brazilian postal code (CEP).
 
+The data fetched is from [BrasilAPI](https://brasilapi.com.br/).
+
 ## Example of MCP Server in Action
 
 - What is the name of the city with CEP 89900000?
