@@ -20,7 +20,7 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 async def main():
     upload_file = client.files.create(
-        file=open("7950_PDF.pdf", "rb"),
+        file=open("knowledge/7950_PDF.pdf", "rb"),
         purpose="user_data",
     )
 

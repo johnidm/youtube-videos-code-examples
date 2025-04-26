@@ -2,3 +2,4 @@ openai
 python-dotenv
 crewai[tools]
 openai-agents
+streamlit

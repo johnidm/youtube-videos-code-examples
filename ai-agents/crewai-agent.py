@@ -1,29 +1,33 @@
-from crewai import Agent, Task, Crew, Process
-from crewai_tools import WebsiteSearchTool, PDFSearchTool
 from dotenv import load_dotenv
+import streamlit as st
+from crewai import Agent, Crew, Process, Task, LLM
+from crewai.knowledge.source.pdf_knowledge_source import PDFKnowledgeSource
 
 load_dotenv()
-pdf_tool = PDFSearchTool(pdf_path="7950_PDF.pdf")
-website_tool = WebsiteSearchTool(
-    website="https://sienge.com.br/",
-    headers={
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36"
-    }
+
+file1 = PDFKnowledgeSource(file_paths=["7950_PDF.pdf"])
+
+llm = LLM(
+    model="openai/gpt-4o-mini",
+    temperature=0,
+    max_tokens=1024,
 )
 
 agent = Agent(
-    role="Um assistente que responde perguntas sobre o `Construsummit 2025",
-    goal="Responde perguntas sobre o Construsummit 2025",
-    backstory="Background information about your agent",
-    tools=[pdf_tool, website_tool],
-    name="Construsummit 2025 Assistant",
-    description="Answers questions using a website"
+    name="PostgreSQL Assistante",
+    description="Responde perguntas sobre PostgreSQL",
+    role="PostgreSQL Expert",
+    goal="Responde perguntas sobre o PostgreSQL",
+    backstory="Você é um assistente especializado em responder perguntas sobre o PostgreSQL.",
+    tools=[],
+    verbose=True,
+    llm=llm,
 )
 
 task = Task(
-    description="Answer the following question using the provided sources: {question}",
-    expected_output="A concise, accurate answer.",
-    agent=agent
+    description="Responda a seguinte pergunta: {question}",
+    expected_output="Uma resposta concisa e precisa.",
+    agent=agent,
 )
 
 crew = Crew(
@@ -31,14 +35,21 @@ crew = Crew(
     tasks=[task],
     process=Process.sequential,  # or Process.parallel if you want parallel execution
     verbose=True,
-    llm="gpt-4o"
+    knowledge_sources=[file1],
 )
 
+st.title("🔎 PostgreSQL AI Assistante")
+st.write("Esse assistente AI ajuda você com **PostgreSQL**.")
 
-def main():
-    while (question := str(input("Pergunta (ENTER para sair): ")).strip()) != "":
-        result = crew.kickoff(inputs={"question": question})
-        print(result)
+with st.sidebar:
+    user_input = st.text_area("Faça uma pergunta sobre PostgreSQL:")
 
-if __name__ == "__main__":
-    main()
+if st.button("Enviar 🚀"):
+    if not user_input.strip():
+        st.warning("⚠️ Por favor, insira sua pergunta antes de enviar.")
+    else:
+        st.write("⏳ Processando sua requisição... Aguarde.")
+        result = crew.kickoff(inputs={"question": user_input})
+
+        st.subheader("✅ PostgreSQL AI Response:")
+        st.write(result)

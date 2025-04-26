@@ -20,7 +20,7 @@ if not vector_store:
     vector_store_id = vector_store.id
 
     file1 = client.files.create(
-        file=open("7950_PDF.pdf", "rb"),
+        file=open("knowledge/7950_PDF.pdf", "rb"),
         purpose="assistants"
     )
 

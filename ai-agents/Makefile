@@ -4,4 +4,7 @@ openai-response-api:
 install-dependencies:
 	@pip install -r requirements.txt
 
-.PHONY: openai-response-api
+crewai-agent:
+	@streamlit run crewai-agent.py
+
+.PHONY: openai-response-api install-dependencies crewai-agent
