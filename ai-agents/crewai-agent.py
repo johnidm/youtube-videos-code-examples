@@ -49,7 +49,9 @@ if st.button("Enviar 🚀"):
         st.warning("⚠️ Por favor, insira sua pergunta antes de enviar.")
     else:
         st.write("⏳ Processando sua requisição... Aguarde.")
-        result = crew.kickoff(inputs={"question": user_input})
 
+        response = crew.kickoff(inputs={"question": user_input})
+        result = response.raw
         st.subheader("✅ PostgreSQL AI Response:")
         st.write(result)
+        st.text_area("Token Usage:", response.token_usage)
