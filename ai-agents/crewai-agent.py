@@ -5,7 +5,7 @@ from crewai.knowledge.source.pdf_knowledge_source import PDFKnowledgeSource
 
 load_dotenv()
 
-file1 = PDFKnowledgeSource(file_paths=["7950_PDF.pdf"])
+file1 = PDFKnowledgeSource(file_paths=["ConstruSummit.pdf"])
 
 llm = LLM(
     model="openai/gpt-4o-mini",
@@ -14,11 +14,11 @@ llm = LLM(
 )
 
 agent = Agent(
-    name="PostgreSQL Assistante",
-    description="Responde perguntas sobre PostgreSQL",
-    role="PostgreSQL Expert",
-    goal="Responde perguntas sobre o PostgreSQL",
-    backstory="Você é um assistente especializado em responder perguntas sobre o PostgreSQL.",
+    name="ConstruSummit Assistente",
+    description="Responde perguntas sobre ConstruSummit",
+    role="ConstruSummit Expert",
+    goal="Responde perguntas sobre o ConstruSummit",
+    backstory="Você é um assistente especializado em responder perguntas sobre o ConstruSummit.",
     tools=[],
     verbose=True,
     llm=llm,
@@ -38,11 +38,11 @@ crew = Crew(
     knowledge_sources=[file1],
 )
 
-st.title("🔎 PostgreSQL AI Assistante")
-st.write("Esse assistente AI ajuda você com **PostgreSQL**.")
+st.title("🔎 ConstruSummit AI Assistente")
+st.write("Esse assistente AI ajuda você com **ConstruSummit**.")
 
 with st.sidebar:
-    user_input = st.text_area("Faça uma pergunta sobre PostgreSQL:")
+    user_input = st.text_area("Faça uma pergunta sobre ConstruSummit:")
 
 if st.button("Enviar 🚀"):
     if not user_input.strip():
@@ -52,6 +52,6 @@ if st.button("Enviar 🚀"):
 
         response = crew.kickoff(inputs={"question": user_input})
         result = response.raw
-        st.subheader("✅ PostgreSQL AI Response:")
+        st.subheader("✅ ConstruSummit AI Response:")
         st.write(result)
         st.text_area("Token Usage:", response.token_usage)

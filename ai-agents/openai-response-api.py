@@ -20,12 +20,12 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 async def main():
     upload_file = client.files.create(
-        file=open("knowledge/7950_PDF.pdf", "rb"),
+        file=open("knowledge/ConstruSummit.pdf", "rb"),
         purpose="user_data",
     )
 
     try:
-        while (question := str(input("Question (press ENTER to exit): "))) != "":
+        while (question := str(input("Pergunta (ENTER para sair): "))) != "":
             inputs = [
                 {
                     "role": "user",
@@ -43,7 +43,7 @@ async def main():
             ]
 
             response = client.responses.create(
-                instructions="Você é um assistente especializado em responder perguntas sobre o PostgreSQL.",
+                instructions="Você é um assistente especializado em responder perguntas sobre o ConstruSummit.",
                 model="gpt-4o",
                 input=inputs,
             )
