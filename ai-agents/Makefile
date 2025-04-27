@@ -10,4 +10,7 @@ crewai-agent:
 openai-agent-sdk:
 	@python openai-agent-sdk.py
 
-.PHONY: openai-response-api install-dependencies crewai-agent openai-agent-sdk
+openai-agent-sdk-streamlit:
+	@streamlit run openai-agent-sdk-streamlit.py
+
+.PHONY: openai-response-api install-dependencies crewai-agent openai-agent-sdk openai-agent-sdk-streamlit
