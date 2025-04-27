@@ -11,7 +11,7 @@ load_dotenv()
 
 client = OpenAI()
 
-VECTOR_STORE_NAME = "PostgreSQL Arquivos"
+VECTOR_STORE_NAME = "ConstruSummit Arquivos"
 
 vector_store = [ v for v in client.vector_stores.list() if v.name == VECTOR_STORE_NAME ]
 if not vector_store:
@@ -20,7 +20,7 @@ if not vector_store:
     vector_store_id = vector_store.id
 
     file1 = client.files.create(
-        file=open("knowledge/7950_PDF.pdf", "rb"),
+        file=open("knowledge/ConstruSummit.pdf", "rb"),
         purpose="assistants"
     )
 
@@ -36,18 +36,18 @@ else:
     vector_store_id = vector_store[0].id
 
 agent = Agent(
-    name="PostgreSQL Assistente",
-    instructions="Você é um assistente especializado em responder perguntas sobre o PostgreSQL.",
+    name="ConstruSummit Assistente",
+    instructions="Você é um assistente especializado em responder perguntas sobre o ConstruSummit.",
     model="gpt-4o",
     model_settings=ModelSettings(
         temperature=0.7,
         max_tokens=1024,
     ),
     tools=[
-        # FileSearchTool(
-        #     vector_store_ids=[vector_store_id],
-        #     max_num_results=3
-        # ),
+        FileSearchTool(
+            vector_store_ids=[vector_store_id],
+            max_num_results=3
+        ),
         WebSearchTool(
             user_location={
                 "type": "approximate",
