@@ -108,3 +108,9 @@ streamlit run crewai-agent.py
 - The examples use a PDF file about "ConstruSummit" for demonstration purposes
 - Each implementation showcases different approaches to building AI agents
 - The Streamlit interfaces provide a user-friendly way to interact with the agents
+
+## Ngrok
+
+```bash
+ngrok http 8000
+```
