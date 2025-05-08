@@ -1,12 +1,5 @@
 """
-Example of using OpenAI Response API to answer questions about a PDF file.
-
-This script creates an agent that can answer questions about the content of 7950_PDF.pdf
-using OpenAI's Response API with the ability to process and understand PDF files.
-
-References:
-    - https://platform.openai.com/docs/api-reference/files/create
-    - https://platform.openai.com/docs/guides/pdf-files?api-mode=responses
+https://www.twilio.com/docs/whatsapp
 """
 
 from dotenv import load_dotenv
