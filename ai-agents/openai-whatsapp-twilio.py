@@ -67,12 +67,17 @@ agent = Agent(
 app = FastAPI()
 
 
-async def replay(message: str, to: str, from_: str):
-    message = client.messages.create(
-        body=message, from_=f"whatsapp:{from_}", to=f"whatsapp:{to}"
-    )
+async def replay(message: str, to: str):
+    form_ = "whatsapp:+14155238886"
 
-    print(message.sid)
+    result = await Runner.run(agent, message)
+    message = result.final_output
+
+    client.messages.create(
+        body=message,
+        from_=form_,
+        to=to,
+    )
 
 
 @app.post("/ask/webhook")
@@ -90,11 +95,5 @@ async def chat(
         raise HTTPException(status_code=400, detail="Error in Twilio Signature")
 
     response = MessagingResponse()
-    question = Body
-    result = await Runner.run(agent, question)
-
-    message = result.final_output
-    print(f"from={From}, body={Body}", message)
-    response.message(message)
-    background_tasks.add_task(replay, message, From, Body)
+    background_tasks.add_task(replay, Body, From)
     return Response(content=str(response), media_type="application/xml")
