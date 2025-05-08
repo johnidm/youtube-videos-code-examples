@@ -20,8 +20,16 @@ from agents import Runner
 from fastapi.exceptions import HTTPException
 from twilio.request_validator import RequestValidator
 import os
+from twilio.rest import Client
+from fastapi import BackgroundTasks
+
 
 load_dotenv()
+
+
+account_sid = os.environ["TWILIO_ACCOUNT_SID"]
+auth_token = os.environ["TWILIO_AUTH_TOKEN"]
+client = Client(account_sid, auth_token)
 
 
 instructions = """
@@ -32,6 +40,9 @@ As respostas devem ser em PORTUGUÊS do Brasil.
 As respostas devem ter no máximo 100 palavras.
 O formato de resposta deve ser simples e direto sem nenhum tipo de formatação.
 """
+
+
+client = Client(account_sid, auth_token)
 
 agent = Agent(
     name="ConstruSummit 2025 Assistente",
@@ -56,14 +67,25 @@ agent = Agent(
 app = FastAPI()
 
 
+async def replay(message: str, to: str, from_: str):
+    message = client.messages.create(
+        body=message, from_=f"whatsapp:{from_}", to=f"whatsapp:{to}"
+    )
+
+    print(message.sid)
+
+
 @app.post("/ask/webhook")
-async def chat(From: str = Form(...), Body: str = Form(...), request: Request = None):
+async def chat(
+    background_tasks: BackgroundTasks,
+    From: str = Form(...),
+    Body: str = Form(...),
+    request: Request = None,
+):
     validator = RequestValidator(os.environ["TWILIO_AUTH_TOKEN"])
     form_ = await request.form()
     if not validator.validate(
-        str(request.url), 
-        form_, 
-        request.headers.get("X-Twilio-Signature", "")
+        str(request.url), form_, request.headers.get("X-Twilio-Signature", "")
     ):
         raise HTTPException(status_code=400, detail="Error in Twilio Signature")
 
@@ -74,4 +96,5 @@ async def chat(From: str = Form(...), Body: str = Form(...), request: Request = 
     message = result.final_output
     print(f"from={From}, body={Body}", message)
     response.message(message)
+    background_tasks.add_task(replay, message, From, Body)
     return Response(content=str(response), media_type="application/xml")
