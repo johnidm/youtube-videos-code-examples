@@ -15,6 +15,7 @@ from twilio.request_validator import RequestValidator
 import os
 from twilio.rest import Client
 from fastapi import BackgroundTasks
+from fastapi import Body
 
 
 load_dotenv()
@@ -73,8 +74,16 @@ async def replay(message: str, to: str):
     )
 
 
+@app.post("/chat")
+async def chat(message: dict = Body(...)):
+    print(message)
+    result = await Runner.run(agent, message["message"])
+    message = result.final_output
+    return {"message": message}
+
+
 @app.post("/ask/webhook")
-async def chat(
+async def webhook(
     background_tasks: BackgroundTasks,
     From: str = Form(...),
     Body: str = Form(...),
