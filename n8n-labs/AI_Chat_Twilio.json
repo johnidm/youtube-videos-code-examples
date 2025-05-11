@@ -1,0 +1,96 @@
+{
+  "name": "AI Chat Twilio",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -400,
+        -320
+      ],
+      "id": "5648abe9-ba95-4302-9f7c-f1fa745b1147",
+      "name": "When chat message received",
+      "webhookId": "3c58c379-0a74-43bd-8bbc-4b6983c4c1f2"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://27b4-2804-1530-61f-900-96b-429f-2678-d7aa.ngrok-free.app/chat",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"message\": \"{{ $json.chatInput }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -40,
+        -240
+      ],
+      "id": "06a92c96-a9cc-44ff-b71d-6b835141b6f7",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "from": "+14155238886",
+        "to": "+554984269352",
+        "toWhatsapp": true,
+        "message": "={{ $json.message }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.twilio",
+      "typeVersion": 1,
+      "position": [
+        240,
+        -140
+      ],
+      "id": "f02c9b49-2b9e-43da-a8c0-536702c15f63",
+      "name": "Twilio",
+      "credentials": {
+        "twilioApi": {
+          "id": "viMhYsdEoo0Iy7NR",
+          "name": "Twilio account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Twilio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "744d7d2a-0430-4f8f-97cc-7aa27ad57d3d",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "a1c1c2b04799bbaa5ba50da33a5b6fa9477cf63a69cbeae38ec38c8d1790b8fc"
+  },
+  "id": "aDvbAO88dbelxYdx",
+  "tags": []
+}

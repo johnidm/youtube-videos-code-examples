@@ -1,0 +1,144 @@
+{
+  "name": "Twilio",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "04be0199-065d-4e0e-ae4d-ef4ee8636d14",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -380,
+        -200
+      ],
+      "id": "c21e3fb4-763a-4d4b-843a-5e2005f9e64d",
+      "name": "Webhook",
+      "webhookId": "04be0199-065d-4e0e-ae4d-ef4ee8636d14"
+    },
+    {
+      "parameters": {
+        "from": "+14155238886",
+        "to": "={{ $('Webhook').item.json.body.to }}",
+        "toWhatsapp": true,
+        "message": "={{ $json.message.content }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.twilio",
+      "typeVersion": 1,
+      "position": [
+        320,
+        -200
+      ],
+      "id": "2c45b2c3-3edb-4eda-a690-6cfc916d7de2",
+      "name": "Twilio",
+      "credentials": {
+        "twilioApi": {
+          "id": "viMhYsdEoo0Iy7NR",
+          "name": "Twilio account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "={{ $json.body.message }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        -80,
+        -200
+      ],
+      "id": "63e4c18e-83c8-45e1-96c0-2c785d284e4e",
+      "name": "OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "xyj71CM1A1BjIC7M",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Request\n\n```\r\ncurl -X POST http://localhost:5678/webhook/04be0199-065d-4e0e-ae4d-ef4ee8636d14 \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"to\": \"+554984269352\",\n    \"message\": \"My\"\n  }'\n```",
+        "height": 240,
+        "width": 860
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -400,
+        40
+      ],
+      "id": "060c9baa-bada-4b00-b827-732b030763a0",
+      "name": "Sticky Note"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "body": {
+            "to": "+554984269352",
+            "message": "Hello, this is a test message."
+          }
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Twilio": {
+      "main": [
+        []
+      ]
+    },
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "Twilio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "versionId": "86ad5371-163a-49cb-a942-03211d3abc54",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "a1c1c2b04799bbaa5ba50da33a5b6fa9477cf63a69cbeae38ec38c8d1790b8fc"
+  },
+  "id": "S39ioahl2h1ZeJHf",
+  "tags": []
+}

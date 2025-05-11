@@ -1,0 +1,117 @@
+{
+  "name": "Webhook",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "f4c8788e-34c4-4421-8e8c-426817eb0d51",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -400,
+        -60
+      ],
+      "id": "981a5549-6aed-4a42-bfd9-ec45a1e91677",
+      "name": "Webhook",
+      "webhookId": "f4c8788e-34c4-4421-8e8c-426817eb0d51"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://4f9b-2804-1530-61f-900-96b-429f-2678-d7aa.ngrok-free.app/receive",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"response\" : \"{{ $json.message.content }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        220,
+        -60
+      ],
+      "id": "29589d22-ab87-44cc-a4b1-c0a3da483a32",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "={{ $json.body.message }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        -160,
+        -60
+      ],
+      "id": "cc9bc348-6d3e-4e5b-bc6d-e1570cf3ff08",
+      "name": "OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "xyj71CM1A1BjIC7M",
+          "name": "OpenAi account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "body": {
+            "message": "Qual a capital do Brasil"
+          }
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "OpenAI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "b09e2e3b-8351-4402-998b-6c9333e6e582",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "a1c1c2b04799bbaa5ba50da33a5b6fa9477cf63a69cbeae38ec38c8d1790b8fc"
+  },
+  "id": "FGK81ABewCNvpLci",
+  "tags": []
+}
