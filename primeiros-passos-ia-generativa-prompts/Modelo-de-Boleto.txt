@@ -1,0 +1,192 @@
+
+Pode
+Contar
+
+Banese
+
+3.3. Modelo do boleto
+
+Versão 1.6
+
+Banese
+
+Local de pagamento
+
+10
+
+047-7
+
+Pagável preferencialmente na rede Banese
+
+Beneficiario
+
+04791.50104 55785.500004 04683.047387 5 82990002000000
+
+Teste Daniela de Oliveira Nome CPF/CNPJ: 007.995.835-45
+
+RUA B 872, LOTEAMENTO RIO MAR-Centro-Barra Dos Coqueiros-SE-49140000
+
+Vencimento
+
+27/06/2020
+
+Agencia Codigo beneficiario
+
+Data do documento
+04/02/2020
+
+N. do documento
+
+Especie doc
+20
+
+Aceite
+A
+
+Data processamento
+04/02/2020
+
+Uso do bianco
+
+Carteira
+
+8
+
+Especie
+
+RS
+
+Quantidade
+
+Valor
+
+Instruções
+
+Cobrar multa de 1,50% a partir de 28/08/2020
+
+Cobrar juros de 2,00% a partir de 28/06/2020
+Cobrar desconto de 0,05% até 22/06/2020
+
+Pagador
+
+Janis Joplin-CPF/CNPJ: 20.507.314/0001-20
+AVENIDA CANAL 2222
+
+Zona De Expansão (Aruana) - Aracaju - SE-49000629
+
+Beneficiario Final
+
+015/01055785-5
+
+Nosso número
+
+000004683
+
+Valor documento
+
+20.000,00
+
+Descontos/Apatimento
+
+Outras deduções
+
+MoralMurts
+
+Outros acréscimos
+
+(Vaior cobrado
+
+Identificador
+
+Autenticação месапіса Ніспa de compensação
+
+Banese
+
+Local de pagamento
+
+047-7
+
+Pagável preferencialmente na rede Banese
+
+Beneficiario
+
+04791.50104 55785.500004 04683.047387 5 82990002000000
+
+Teste Daniela de Oliveira Nome - CPF/CNPJ: 007.995.835-45
+
+RUA B 872. LOTEAMENTO RIO MAR - Centro - Barra Dos Coqueiros -SE-49140000
+
+Data do documento
+
+04/02/2020
+
+Uso do banco
+
+instruções
+
+N. do documento
+
+Cartera
+8
+
+Especie
+RS
+
+Cobrar multa de 1,50% a partir de 28/06/2020
+Cobrar juros de 2,00% a partir de 28/06/2020
+Cobrar desconto de 0,05% até 22/06/2020
+
+Especie doc
+20
+
+Aceite
+A
+
+Quantoade
+
+Data processamento
+04/02/2020
+Valor
+
+Vencimento
+
+Agencia Codigo beneficiano
+
+27/06/2020
+
+015/01055785-5
+
+Nosso número
+
+(Vaior documento
+
+Descontos Abatimentos
+
+Outras deduções
+
+Mora Muita
+
+Outros acrescimos
+
+Valor cobrado
+
+Identificador
+
+000004683
+
+20.000.00
+
+Pagador
+
+Janis Joplin - CPF/CNPJ: 20597.314/0001-20
+AVENIDA CANAL 2222
+Zona De Expansão (Aruana) - Aracaju-SE-49000629
+
+www.banese.com.br
+
+Autenticação Mecánica (Ficha de Compensação
+
+Rua Olimpio de Souza Campos Júnior, 31 Distrito Industrial
+Bairro: Inacio Barbosa Aracaju/SE CEP: 49.040-840
+
+Página 6
