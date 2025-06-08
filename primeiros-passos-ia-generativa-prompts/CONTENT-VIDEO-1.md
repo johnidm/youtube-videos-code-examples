@@ -1,7 +1,7 @@
-
-## - Primeiros passos com IA Generativa (prompts)
+## Primeiros passos com IA Generativa (prompts)
 
 ### Slide 1 – Objetivo
+
 Treinamento para Desenvolvedores: Resolvendo Problemas Cotidianos com IA Generativa
 
 Neste treinamento, vamos demonstrar como aplicar a Inteligência Artificial Generativa para resolver desafios comuns do dia a dia na rotina de desenvolvimento de software.
