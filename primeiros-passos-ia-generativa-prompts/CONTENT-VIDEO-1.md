@@ -77,3 +77,7 @@ Tokens não são necessariamente palavras inteiras. Uma palavra pode ser compost
 Mais informações:
 - Tabela de preços OpenAI - https://platform.openai.com/docs/pricing
 - Tokenizador da OpenAI - https://platform.openai.com/tokenizer
+
+### Slide 6 - Próximas Etapdas
+
+Explorar casos de uso.
