@@ -65,9 +65,9 @@ Demonstração prática no Playground.
 
 Para integrar modelos generativos ao seu código, estas bibliotecas são ótimos pontos de partida:
 
-- Python: openai/openai-python
-- Java: spring-projects/spring-ai
-- C#: microsoft/semantic-kernel
+- [OpenAI Reference - Python](https://platform.openai.com/docs/api-reference/introduction)
+- [SpringAI - Java](https://spring.io/projects/spring-ai)
+- [C# Semantic Kernel](https://learn.microsoft.com/en-us/semantic-kernel/overview/): 
 
 ### Slide 5 - Custos baseados em Tokens
 O custo de uso de um modelo de linguagem (LLM) é calculado com base no consumo de tokens. Na maioria das LLMs, a cada 1 milhão de tokens processados (entrada e saída), é cobrado um valor específico.
