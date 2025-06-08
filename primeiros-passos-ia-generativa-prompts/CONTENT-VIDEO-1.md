@@ -79,6 +79,6 @@ Mais informações:
 - Tabela de preços OpenAI - https://platform.openai.com/docs/pricing
 - Tokenizador da OpenAI - https://platform.openai.com/tokenizer
 
-### Slide 6 - Próximas Etapdas
+### Slide 6 - Próximas Etapas
 
 Explorar casos de uso.
