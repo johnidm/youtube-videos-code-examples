@@ -56,3 +56,6 @@ python main.py 'path/to/your/pdf'
 
 For more information about token usage with PDF content, see the discussion [OpenAI Community Discussion](https://community.openai.com/t/how-does-openai-charge-tokens-when-sending-pdf-content-in-a-prompt/1280985)
 
+## Usage Dashboard 
+
+- https://platform.openai.com/usage
