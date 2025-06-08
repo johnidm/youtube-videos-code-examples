@@ -1,9 +1,12 @@
-## Take 1 – Objetivo
+
+## - Primeiros passos com IA Generativa (prompts)
+
+### Slide 1 – Objetivo
 Treinamento para Desenvolvedores: Resolvendo Problemas Cotidianos com IA Generativa
 
 Neste treinamento, vamos demonstrar como aplicar a Inteligência Artificial Generativa para resolver desafios comuns do dia a dia na rotina de desenvolvimento de software.
 
-## Take 2 – O que você precisa entender antes de começar
+### Slide 2 – O que você precisa entender antes de começar
 
 Explorando o OpenAI Playground - https://platform.openai.com/playground/prompts
 
@@ -47,7 +50,7 @@ Resultado
 ```O documento trata de um contrato de locação residencial celebrado entre duas partes: o LOCADOR e o LOCATÁRIO, devidamente identificados por nome, CPF, identidade e endereço.
 ```
 
-## Take 3 – Mudando a Forma de Pensar: Prompts e Saídas Estruturadas
+### Slide 3 – Mudando a Forma de Pensar: Prompts e Saídas Estruturadas
 
 Nós, desenvolvedores, estamos acostumados a resolver problemas com classes e funções. Com a IA Generativa, essa lógica muda — passamos a trabalhar com prompts como principal ferramenta de solução.
 
@@ -57,7 +60,7 @@ Além disso, as saídas estruturadas oferecem um enorme benefício: elas permite
 
 Demonstração prática no Playground.
 
-## Take 4 – Bibliotecas e Frameworks
+### Slide 4  – Bibliotecas e Frameworks
 
 Para integrar modelos generativos ao seu código, estas bibliotecas são ótimos pontos de partida:
 
@@ -65,11 +68,11 @@ Para integrar modelos generativos ao seu código, estas bibliotecas são ótimos
 - Java: spring-projects/spring-ai
 - C#: microsoft/semantic-kernel
 
-## Take 5 – Caso de Uso: Extração de Dados de um Boleto
-Desmistificando a Complexidade da Extração com LLMs
+### Slide 5 - Custos baseados em Tokens
+O custo de uso de um modelo de linguagem (LLM) é calculado com base no consumo de tokens. Na maioria das LLMs, a cada 1 milhão de tokens processados (entrada e saída), é cobrado um valor específico.
 
-Até pouco tempo atrás, implementar projetos de NER (Reconhecimento de Entidades Nomeadas) era uma tarefa complexa e limitada. Hoje, com o uso de LLMs — inclusive multimodais — conseguimos resolver esse tipo de problema com muito mais agilidade e menos código.
+Tokens não são necessariamente palavras inteiras. Uma palavra pode ser composta por um ou mais tokens, dependendo da sua complexidade e estrutura.
 
-Demonstração prática no Playground.
-
-## Take 6 – Caso de Uso: RAG de Uma Página
+Mais informações:
+- Tabela de preços OpenAI - https://platform.openai.com/docs/pricing
+- Tokenizador da OpenAI - https://platform.openai.com/tokenizer
