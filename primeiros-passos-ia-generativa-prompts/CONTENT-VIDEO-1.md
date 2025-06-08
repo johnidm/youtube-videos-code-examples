@@ -47,7 +47,8 @@ String resposta = OpenAI.call(systemPrompt, userPrompt, temperatura, model);
 
 Resultado
 
-```O documento trata de um contrato de locação residencial celebrado entre duas partes: o LOCADOR e o LOCATÁRIO, devidamente identificados por nome, CPF, identidade e endereço.
+```
+O documento trata de um contrato de locação residencial celebrado entre duas partes: o LOCADOR e o LOCATÁRIO, devidamente identificados por nome, CPF, identidade e endereço.
 ```
 
 ### Slide 3 – Mudando a Forma de Pensar: Prompts e Saídas Estruturadas
