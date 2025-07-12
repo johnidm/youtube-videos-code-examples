@@ -6,7 +6,18 @@ Treinamento para Desenvolvedores: Resolvendo Problemas Cotidianos com IA Generat
 
 Neste treinamento, vamos demonstrar como aplicar a Inteligência Artificial Generativa para resolver desafios comuns do dia a dia na rotina de desenvolvimento de software.
 
-### Slide 2 – O que você precisa entender antes de começar
+
+### Slide 2 – Mudando a Forma de Pensar: Prompts e Saídas Estruturadas
+
+Nós, desenvolvedores, estamos acostumados a resolver problemas com classes e funções. Com a IA Generativa, essa lógica muda — passamos a trabalhar com prompts como principal ferramenta de solução.
+
+Isso exige uma mudança de mentalidade: de “escrever código” para “escrever instruções”.
+
+Além disso, as saídas estruturadas oferecem um enorme benefício: elas permitem controlar o formato da resposta da LLM, possibilitando que o resultado seja facilmente convertido em objetos, salvos em bancos de dados ou retornados por APIs.
+
+Demonstração prática no Playground.
+
+### Slide 3 – O que você precisa entender antes de começar
 
 Explorando o OpenAI Playground - https://platform.openai.com/playground/prompts
 
@@ -51,16 +62,6 @@ Resultado
 O documento trata de um contrato de locação residencial celebrado entre duas partes: o LOCADOR e o LOCATÁRIO, devidamente identificados por nome, CPF, identidade e endereço.
 ```
 
-### Slide 3 – Mudando a Forma de Pensar: Prompts e Saídas Estruturadas
-
-Nós, desenvolvedores, estamos acostumados a resolver problemas com classes e funções. Com a IA Generativa, essa lógica muda — passamos a trabalhar com prompts como principal ferramenta de solução.
-
-Isso exige uma mudança de mentalidade: de “escrever código” para “escrever instruções”.
-
-Além disso, as saídas estruturadas oferecem um enorme benefício: elas permitem controlar o formato da resposta da LLM, possibilitando que o resultado seja facilmente convertido em objetos, salvos em bancos de dados ou retornados por APIs.
-
-Demonstração prática no Playground.
-
 ### Slide 4  – Bibliotecas e Frameworks
 
 Para integrar modelos generativos ao seu código, estas bibliotecas são ótimos pontos de partida:
@@ -78,6 +79,6 @@ Mais informações:
 - Tabela de preços OpenAI - https://platform.openai.com/docs/pricing
 - Tokenizador da OpenAI - https://platform.openai.com/tokenizer
 
-### Slide 6 - Próximas Etapdas
+### Slide 6 - Próximas Etapas
 
 Explorar casos de uso.
