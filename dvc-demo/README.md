@@ -17,7 +17,15 @@ dvc pull -r s3
 dvc repro
 ```
 
-DVC and GitHub Actions/GitLab CI ro run a workflow
+## DVC and GitHub Actions/GitLab CI ro run a workflow
+
+Steps 
+
+- Pull the data from DVC 
+- Run the pipeline
+- Push the model to DVC
+- Commit the changes
+- Push to Git remote repo
 
 ## References
 
