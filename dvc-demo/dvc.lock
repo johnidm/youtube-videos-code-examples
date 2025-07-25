@@ -84,3 +84,24 @@ stages:
       hash: md5
       md5: c2ed761f1a3ee7603ffd5f383784ee07
       size: 23
+  inference:
+    cmd: /home/johni.marangon@softplan.com.br/.pyenv/versions/3.12.8/bin/python 
+      src/inference.py
+    deps:
+    - path: data/unseen_data.csv
+      hash: md5
+      md5: 2da271dc232d2350b9cbe6e1a65ae9d3
+      size: 120
+    - path: model/model.pkl
+      hash: md5
+      md5: dd0205c22c94ac1569c494a3a1533ce0
+      size: 2056
+    - path: src/inference.py
+      hash: md5
+      md5: cc17d21db0f0d96f15a13516f304612d
+      size: 612
+    outs:
+    - path: data/predictions/predictions.csv
+      hash: md5
+      md5: d5460896e31260528379d2956cdf928b
+      size: 146

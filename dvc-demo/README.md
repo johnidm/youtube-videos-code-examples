@@ -104,3 +104,5 @@ https://github.com/iterative/example-get-started-experiments
 https://www.youtube.com/watch?v=iduHPtBncBk
 
 https://dvc.org/doc/studio
+
+https://github.com/elleobrien/farmer

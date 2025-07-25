@@ -1,13 +1,13 @@
 stages:
   process_data:
-    cmd: /home/johni.marangon@softplan.com.br/.pyenv/versions/3.12.8/bin/python src/read_data.py
+    cmd: python src/read_data.py
     deps:
     - src/read_data.py
     - data/data.csv
     outs:
     - data/processed/processed_data.csv
   prepare_data:
-    cmd: /home/johni.marangon@softplan.com.br/.pyenv/versions/3.12.8/bin/python src/prepare_data.py
+    cmd: python src/prepare_data.py
     deps:
     - src/prepare_data.py
     - data/processed/processed_data.csv
@@ -19,17 +19,25 @@ stages:
     - data/prepared/train.csv
     - data/prepared/test.csv
   train:
-    cmd: /home/johni.marangon@softplan.com.br/.pyenv/versions/3.12.8/bin/python src/train_data.py
+    cmd: python src/train_data.py
     deps:
     - src/train_data.py
     - data/prepared/train.csv
     outs:
     - model/model.pkl
   evaluate:
-    cmd: /home/johni.marangon@softplan.com.br/.pyenv/versions/3.12.8/bin/python src/evaluate.py
+    cmd: python src/evaluate.py
     deps:
     - src/evaluate.py
     - model/model.pkl
     - data/prepared/test.csv
     metrics:
     - metrics.json
+  inference:
+    cmd: python src/inference.py
+    deps:
+    - src/inference.py
+    - model/model.pkl
+    - data/unseen_data.csv
+    outs:
+    - data/predictions/predictions.csv
