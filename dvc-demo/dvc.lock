@@ -1,0 +1,34 @@
+schema: '2.0'
+stages:
+  process_data:
+    cmd: python src/read_data.py
+    deps:
+    - path: data/data.txt
+      hash: md5
+      md5: 1fdfd718ac9d0952e7ca42438796817f
+      size: 66
+    - path: src/read_data.py
+      hash: md5
+      md5: 76ad76dbd8652b99e342aa6325e8506c
+      size: 296
+    outs:
+    - path: data/processed/processed_data.txt
+      hash: md5
+      md5: 6698c02ef554e0c7f9801146cb8b5295
+      size: 66
+  train:
+    cmd: python src/train_data.py
+    deps:
+    - path: data/processed/processed_data.txt
+      hash: md5
+      md5: 6698c02ef554e0c7f9801146cb8b5295
+      size: 66
+    - path: src/train_data.py
+      hash: md5
+      md5: 47c40e15316dc50570bd2e815c45d9ff
+      size: 358
+    outs:
+    - path: model/model.pkl
+      hash: md5
+      md5: 097ee922ffd95a3f638dcadba249ef19
+      size: 111

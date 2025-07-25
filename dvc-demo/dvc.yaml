@@ -1,0 +1,16 @@
+stages:
+  process_data:
+    cmd: python src/read_data.py
+    deps:
+      - src/read_data.py
+      - data/data.txt
+    outs:
+      - data/processed/processed_data.txt
+
+  train:
+    cmd: python src/train_data.py
+    deps:
+      - src/train_data.py
+      - data/processed/processed_data.txt
+    outs:
+      - model/model.pkl
