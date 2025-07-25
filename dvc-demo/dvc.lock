@@ -1,34 +1,86 @@
 schema: '2.0'
 stages:
   process_data:
-    cmd: python src/read_data.py
+    cmd: /home/johni.marangon@softplan.com.br/.pyenv/versions/3.12.8/bin/python 
+      src/read_data.py
     deps:
-    - path: data/data.txt
+    - path: data/data.csv
       hash: md5
-      md5: 1fdfd718ac9d0952e7ca42438796817f
-      size: 66
+      md5: 3e70055380b311c69c928ac2a7661ce6
+      size: 480
     - path: src/read_data.py
       hash: md5
-      md5: 76ad76dbd8652b99e342aa6325e8506c
-      size: 296
+      md5: 7797185e89eaca2a6d1ab3a004f1654f
+      size: 301
     outs:
-    - path: data/processed/processed_data.txt
+    - path: data/processed/processed_data.csv
       hash: md5
-      md5: 6698c02ef554e0c7f9801146cb8b5295
-      size: 66
+      md5: 7a08a73379afbc797e493e49c898d73f
+      size: 480
   train:
-    cmd: python src/train_data.py
+    cmd: /home/johni.marangon@softplan.com.br/.pyenv/versions/3.12.8/bin/python 
+      src/train_data.py
     deps:
-    - path: data/processed/processed_data.txt
+    - path: data/prepared/train.csv
       hash: md5
-      md5: 6698c02ef554e0c7f9801146cb8b5295
-      size: 66
+      md5: d16a7a99e9410b9c5cfe1968e948652b
+      size: 246
     - path: src/train_data.py
       hash: md5
-      md5: 47c40e15316dc50570bd2e815c45d9ff
-      size: 358
+      md5: 134f8496dfd3defeaa5bcf545ccb26ee
+      size: 695
     outs:
     - path: model/model.pkl
       hash: md5
-      md5: 097ee922ffd95a3f638dcadba249ef19
-      size: 111
+      md5: dd0205c22c94ac1569c494a3a1533ce0
+      size: 2056
+  prepare_data:
+    cmd: /home/johni.marangon@softplan.com.br/.pyenv/versions/3.12.8/bin/python 
+      src/prepare_data.py
+    deps:
+    - path: data/processed/processed_data.csv
+      hash: md5
+      md5: 7a08a73379afbc797e493e49c898d73f
+      size: 480
+    - path: params.yaml
+      hash: md5
+      md5: 02a0772cc8135c72bb6d1cd99bdd79de
+      size: 45
+    - path: src/prepare_data.py
+      hash: md5
+      md5: f86d65dad94e6765c2ec195a22271e32
+      size: 967
+    params:
+      params.yaml:
+        prepare.random_state: 42
+        prepare.test_size: 0.5
+    outs:
+    - path: data/prepared/test.csv
+      hash: md5
+      md5: 96a9d0ac142734758c7e34688756cce5
+      size: 249
+    - path: data/prepared/train.csv
+      hash: md5
+      md5: d16a7a99e9410b9c5cfe1968e948652b
+      size: 246
+  evaluate:
+    cmd: /home/johni.marangon@softplan.com.br/.pyenv/versions/3.12.8/bin/python 
+      src/evaluate.py
+    deps:
+    - path: data/prepared/test.csv
+      hash: md5
+      md5: 96a9d0ac142734758c7e34688756cce5
+      size: 249
+    - path: model/model.pkl
+      hash: md5
+      md5: dd0205c22c94ac1569c494a3a1533ce0
+      size: 2056
+    - path: src/evaluate.py
+      hash: md5
+      md5: 339313dc76ba57639539a859a4061424
+      size: 659
+    outs:
+    - path: metrics.json
+      hash: md5
+      md5: c2ed761f1a3ee7603ffd5f383784ee07
+      size: 23

@@ -1,0 +1,3 @@
+prepare:
+  test_size: 0.5
+  random_state: 42

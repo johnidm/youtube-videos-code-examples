@@ -1,11 +1,11 @@
 import os
+import pandas as pd
 
-# Create directories if they don't exist
-os.makedirs('data/processed', exist_ok=True)
+os.makedirs("data/processed", exist_ok=True)
 
-# Read data, process it, and write to a new file
-with open('data/data.txt', 'r') as f:
-    content = f.read()
+df_raw = pd.read_csv("data/data.csv", sep=",")
 
-with open('data/processed/processed_data.txt', 'w') as f:
-    f.write(content.upper())
+df_raw["text"] = df_raw["text"].str.upper()
+df_raw.to_csv("data/processed/processed_data.csv", index=False)
+
+print("Processed data saved to data/processed/processed_data.csv")
