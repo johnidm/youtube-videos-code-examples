@@ -1,0 +1,63 @@
+# Compiled class files
+*.class
+
+# Log files
+*.log
+logs/
+
+# Build directories
+target/
+build/
+out/
+bin/
+
+# Maven specific
+.mvn/
+mvnw
+mvnw.cmd
+
+# Gradle specific
+.gradle/
+gradle/
+
+# IDE files
+.idea/
+*.iml
+*.iws
+*.ipr
+.classpath
+.project
+.settings/
+.vscode/
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Node modules (if using frontend)
+node_modules/
+npm-debug.log
+
+# Test reports
+test-output/
+reports/
+
+# Local configuration files
+application-local.properties
+application-local.yml
+application-dev.properties
+application-dev.yml
+
+# Git directory
+.git/
+.gitignore
+
+# Docker files (no need to copy these into the image)
+Dockerfile*
+docker-compose*
+compose.yaml
+
+# README and documentation
+README.md
+HELP.md
+LICENSE
