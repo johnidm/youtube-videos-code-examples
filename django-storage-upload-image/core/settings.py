@@ -134,6 +134,11 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
+# If you need to store the credential ina environment variable
+# import json, os
+# credentials_info = json.loads(os.environ['GCP_CREDENTIALS_JSON'])
+# GS_CREDENTIALS = credentials_info
+
 GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
     BASE_DIR / "...json"
 )
