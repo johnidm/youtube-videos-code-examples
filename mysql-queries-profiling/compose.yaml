@@ -1,0 +1,35 @@
+services:
+  api:
+    build: .
+    container_name: api
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_DATABASE=mydb
+      - DB_USER=root
+      - DB_PASSWORD=root
+      - DB_PORT=3306
+
+  db:
+    image: mysql:8.0
+    container_name: db
+    restart: always
+    command:
+      - mysqld
+      - --general_log=1
+      - --general_log_file=/var/log/mysql/general.log
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_ROOT_AUTHENTICATION_PLUGIN: mysql_native_password
+      MYSQL_DATABASE: mydb
+    ports:
+      - "3306:3306"
+    volumes:
+      - database:/var/lib/mysql
+
+      - ./log/mysql:/var/log/mysql
+      - ./initdb.sql:/docker-entrypoint-initdb.d/initdb.sql
+volumes:
+  database:
