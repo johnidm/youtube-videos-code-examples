@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'        # Limit to 0.5 CPU cores
+          memory: 512M       # Limit to 512MB RAM
+        reservations:
+          cpus: '0.25'       # Reserve 0.25 CPU cores
+          memory: 256M       # Reserve 256MB RAM
