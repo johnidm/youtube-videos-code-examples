@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django Email Testing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .test-button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 14px;
+        }
+        .test-button:hover {
+            background-color: #2980b9;
+        }
+        .info-button {
+            background-color: #27ae60;
+        }
+        .info-button:hover {
+            background-color: #229954;
+        }
+        .result {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+        .success {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .error {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        .backend-info {
+            background-color: #e2e3e5;
+            border: 1px solid #d6d8db;
+            color: #383d41;
+        }
+        pre {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 3px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Django Email Testing Dashboard</h1>
+        
+        <div class="test-section">
+            <h3>Email Backend Information</h3>
+            <p>Check current email backend configuration and settings.</p>
+            <button class="test-button info-button" onclick="getBackendInfo()">Get Backend Info</button>
+            <div id="backend-result" class="result"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>1. Simple Email Test</h3>
+            <p>Test basic email functionality using Django's send_mail() function.</p>
+            <button class="test-button" onclick="sendSimpleEmail()">Send Simple Email</button>
+            <div id="simple-result" class="result"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>2. HTML Email Test</h3>
+            <p>Test sending HTML emails with both plain text and HTML alternatives.</p>
+            <button class="test-button" onclick="sendHtmlEmail()">Send HTML Email</button>
+            <div id="html-result" class="result"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>3. Template-based Email Test</h3>
+            <p>Test sending emails using Django templates for dynamic content.</p>
+            <button class="test-button" onclick="sendTemplateEmail()">Send Template Email</button>
+            <div id="template-result" class="result"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>4. Mass Email Test</h3>
+            <p>Test sending multiple emails efficiently using send_mass_mail().</p>
+            <button class="test-button" onclick="sendMassEmail()">Send Mass Emails</button>
+            <div id="mass-result" class="result"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>5. Email with Attachment Test</h3>
+            <p>Test sending emails with file attachments.</p>
+            <button class="test-button" onclick="sendAttachmentEmail()">Send Email with Attachment</button>
+            <div id="attachment-result" class="result"></div>
+        </div>
+    </div>
+
+    <script>
+        function makeRequest(url, resultId) {
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    const resultDiv = document.getElementById(resultId);
+                    resultDiv.style.display = 'block';
+                    
+                    if (data.status === 'success') {
+                        resultDiv.className = 'result success';
+                        resultDiv.innerHTML = `
+                            <strong>Success:</strong> ${data.message}
+                            ${data.details ? '<pre>' + JSON.stringify(data.details, null, 2) + '</pre>' : ''}
+                            ${data.backend_info ? '<pre>' + JSON.stringify(data.backend_info, null, 2) + '</pre>' : ''}
+                        `;
+                    } else {
+                        resultDiv.className = 'result error';
+                        resultDiv.innerHTML = `<strong>Error:</strong> ${data.message}`;
+                    }
+                })
+                .catch(error => {
+                    const resultDiv = document.getElementById(resultId);
+                    resultDiv.style.display = 'block';
+                    resultDiv.className = 'result error';
+                    resultDiv.innerHTML = `<strong>Error:</strong> ${error.message}`;
+                });
+        }
+
+        function getBackendInfo() {
+            makeRequest('/backend-info/', 'backend-result');
+        }
+
+        function sendSimpleEmail() {
+            makeRequest('/simple/', 'simple-result');
+        }
+
+        function sendHtmlEmail() {
+            makeRequest('/html/', 'html-result');
+        }
+
+        function sendTemplateEmail() {
+            makeRequest('/template/', 'template-result');
+        }
+
+        function sendMassEmail() {
+            makeRequest('/mass/', 'mass-result');
+        }
+
+        function sendAttachmentEmail() {
+            makeRequest('/attachment/', 'attachment-result');
+        }
+    </script>
+</body>
+</html>

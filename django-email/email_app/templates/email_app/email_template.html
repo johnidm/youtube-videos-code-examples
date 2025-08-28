@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django Email Template</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background-color: #3498db;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px 5px 0 0;
+        }
+        .content {
+            background-color: #f9f9f9;
+            padding: 30px;
+            border: 1px solid #ddd;
+        }
+        .footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 0 0 5px 5px;
+            font-size: 12px;
+        }
+        .feature-list {
+            background-color: white;
+            padding: 15px;
+            border-left: 4px solid #27ae60;
+            margin: 20px 0;
+        }
+        .feature-list ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .feature-list li {
+            margin: 8px 0;
+        }
+        .highlight {
+            background-color: #fff3cd;
+            padding: 10px;
+            border-radius: 3px;
+            border-left: 4px solid #ffc107;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Welcome to {{ product_name }}!</h1>
+    </div>
+    
+    <div class="content">
+        <p>Hello {{ user_name }},</p>
+        
+        <p>Thank you for testing Django's email functionality! This email was generated using Django templates, which allows for dynamic content and professional formatting.</p>
+        
+        <div class="feature-list">
+            <h3>Features demonstrated in this email:</h3>
+            <ul>
+                {% for feature in features %}
+                <li>{{ feature }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        
+        <div class="highlight">
+            <strong>Template Variables:</strong> This email demonstrates how to use Django template context variables to personalize emails and include dynamic content.
+        </div>
+        
+        <p>This template-based approach allows you to:</p>
+        <ul>
+            <li>Separate email design from Python code</li>
+            <li>Use Django's template inheritance and includes</li>
+            <li>Apply consistent styling across all emails</li>
+            <li>Easily maintain and update email content</li>
+        </ul>
+        
+        <p>If you have any questions about Django email functionality, feel free to reach out!</p>
+        
+        <p>Best regards,<br>
+        The Django Email Testing Team</p>
+    </div>
+    
+    <div class="footer">
+        <p>This email was sent from Django Email Testing Project</p>
+        <p>Support: {{ support_email }} | Generated at: {% now "Y-m-d H:i:s" %}</p>
+    </div>
+</body>
+</html>
