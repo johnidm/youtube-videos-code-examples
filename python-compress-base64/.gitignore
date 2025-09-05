@@ -1,0 +1,8 @@
+# Ignore generated images
+
+# Python artifacts
+__pycache__/
+*.pyc
+
+# Environment variables
+.env
