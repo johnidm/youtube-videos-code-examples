@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  app-dev:
+    build:
+      context: .
+      target: development
+    container_name: fastapi-dev
+    environment:
+      - APP_ENV=development
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./:/app
+    restart: unless-stopped
+
+  app-prod:
+    build:
+      context: .
+      target: production
+    container_name: fastapi-prod
+    environment:
+      - APP_ENV=production
+    ports:
+      - "8000:8000"
+    restart: unless-stopped

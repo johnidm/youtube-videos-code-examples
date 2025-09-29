@@ -1,0 +1,33 @@
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# Virtual envs
+.venv/
+venv/
+
+# Python tooling caches
+.pytest_cache/
+.mypy_cache/
+
+# Editors/IDE
+.vscode/
+.idea/
+
+# VCS
+.git/
+.gitignore
+
+# OS / misc
+.DS_Store
+*.log
+
+# Env files
+.env
+.env.*
+
+# Project files not needed in image
+README.md
+Dockerfile
