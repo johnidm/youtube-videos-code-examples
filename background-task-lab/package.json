@@ -1,0 +1,42 @@
+{
+  "name": "background-task-lab",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "build:cron": "esbuild app/jobs/*.ts --bundle --platform=node --outdir=.next/standalone/jobs --out-extension:.js=.js --external:better-sqlite3 --external:drizzle-orm",
+    "start": "next start",
+    "lint": "eslint",
+    "job:cleanup": "node jobs/cleanupExpiredData.js",
+    "job:notify": "node jobs/notifyLateServiceOrder.js",
+    "job:insert": "node jobs/insertRandomUser.js",
+    "job:cleanup:dev": "tsx app/jobs/cleanupExpiredData.ts",
+    "job:notify:dev": "tsx app/jobs/notifyLateServiceOrder.ts",
+    "job:insert:dev": "tsx app/jobs/insertRandomUser.ts",
+    "db:seed": "tsx db/seed.ts",
+    "db:query": "tsx db/query.ts"
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.5.0",
+    "dotenv": "^17.2.3",
+    "drizzle-orm": "^0.45.1",
+    "next": "16.1.1",
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "drizzle-kit": "^0.31.8",
+    "esbuild": "^0.27.2",
+    "eslint": "^9",
+    "eslint-config-next": "16.1.1",
+    "tailwindcss": "^4",
+    "tsx": "^4.21.0",
+    "typescript": "^5"
+  }
+}
