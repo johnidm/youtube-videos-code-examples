@@ -2,6 +2,18 @@
 
 A Next.js application with SQLite database and background job system using Docker.
 
+**Technical summary of the solution:**
+
+* The email-sending logic lives in reusable project modules (`/app/jobs`)
+* A Node.js script acts as the entry point for the background task
+* The operating system’s cron schedules execution (e.g., every Monday at 11 a.m.)
+* The task runs outside the HTTP flow, without depending on Next.js handling requests
+* Logs can be captured directly by the cron process — I’m considering storing executions in a database table
+* The solution can run in Docker, ensuring consistency across environments
+
+This is a simpler solution, with no dependency on external services, keeping everything centralized in the same repository.
+
+
 ## 🚀 Quick Start
 
 ### Build and Run the Application
