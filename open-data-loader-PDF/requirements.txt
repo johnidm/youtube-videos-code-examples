@@ -1,0 +1,4 @@
+opendataloader-pdf
+reportlab
+langchain-opendataloader-pdf
+langchain

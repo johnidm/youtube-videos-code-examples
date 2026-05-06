@@ -1,0 +1,8 @@
+output/
+sample_pdfs/
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+.claude/
