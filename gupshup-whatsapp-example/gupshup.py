@@ -1,4 +1,3 @@
-import json
 import logging
 
 import httpx
@@ -40,20 +39,22 @@ class GupshupClient:
         response.raise_for_status()
 
     async def send_text(self, destination: str, text: str) -> dict:
-        url = f"{self._settings.gupshup_api_base_url}/wa/api/v1/msg"
-        message = json.dumps({"type": "text", "text": text})
+        url = (
+            f"{self._settings.gupshup_api_base_url}/wa/app/"
+            f"{self._settings.gupshup_app_id}/v3/msg"
+        )
         response = await self._client.post(
             url,
             headers={
                 "apikey": self._settings.gupshup_api_key,
-                "Content-Type": "application/x-www-form-urlencoded",
+                "Content-Type": "application/json",
             },
-            data={
-                "channel": "whatsapp",
-                "source": self._settings.gupshup_source_number,
-                "destination": destination,
-                "src.name": self._settings.gupshup_app_name,
-                "message": message,
+            json={
+                "messaging_product": "whatsapp",
+                "recipient_type": "individual",
+                "to": destination,
+                "type": "text",
+                "text": {"body": text},
             },
         )
         logger.info(

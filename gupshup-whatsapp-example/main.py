@@ -4,7 +4,7 @@ from contextlib import asynccontextmanager
 from typing import Any
 
 import httpx
-from fastapi import BackgroundTasks, FastAPI, Request, Response
+from fastapi import BackgroundTasks, FastAPI, HTTPException, Request, Response
 from pydantic import BaseModel, ConfigDict, ValidationError
 
 from config import settings
@@ -29,6 +29,11 @@ class InboundEvent(BaseModel):
 
     type: str
     payload: dict[str, Any] | None = None
+
+
+class SendMessageRequest(BaseModel):
+    destination: str
+    text: str
 
 
 def extract_text_messages(data: dict[str, Any]) -> list[InboundMessage]:
@@ -87,6 +92,18 @@ app = FastAPI(title="Gupshup WhatsApp Webhook", lifespan=lifespan)
 @app.get("/")
 def health_check():
     return {"app_name": settings.gupshup_app_name}
+
+
+@app.post("/messages")
+async def send_message(request: Request, payload: SendMessageRequest):
+    try:
+        return await request.app.state.gupshup.send_text(payload.destination, payload.text)
+    except httpx.HTTPError as exc:
+        logger.error("Failed to send message to %s: %s", payload.destination, exc)
+        raise HTTPException(
+            status_code=502,
+            detail="Failed to send message via Gupshup",
+        ) from exc
 
 
 @app.post("/webhook")
