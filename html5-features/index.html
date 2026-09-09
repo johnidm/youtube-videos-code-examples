@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5 Features</title>
+</head>
+
+<body>
+    <h1>HTML5 Features</h1>
+
+    <h2>Dataset</h2>
+
+    <button id="button1" data-user-id="1" data-role="admin">Click me</button>
+    <p id="output1"></p>
+
+    <hr>
+
+    <h2>Modal - Dialog Element</h2>
+
+    <button id="openModal">Open Modal</button>
+
+    <dialog id="modal">
+        <p>Modal</p>
+        <button id="closeModal">Close</button>
+    </dialog>
+
+    <h2>Calculation</h2>
+
+    <form oninput="total.value = quantity.value * price.value">
+        <input type="number" id="quantity" value="1">
+        <input type="number" id="price" value="20">
+
+        Total: <output id="total">20</output>
+    </form>
+
+
+    <h2>Progress</h2>
+    <progress id="progress" value="0" max="100"></progress>
+
+
+    <h2>Details and Summary</h2>
+    <details>
+        <summary>Click me</summary>
+        <p>Details</p>
+    </details>
+
+    <h2>Time</h2>
+    <time datetime="2025-10-15T12:00:00">October 15, 2025 at 12:00 PM</time>
+
+    <h2>Mark</h2>
+    <p>This is a <mark>highlighted</mark> text.</p>
+
+    <h2>Visual Media</h2>
+    <video src="video.mp4" controls></video>
+
+    <h2>Visualize Data</h2>
+    <meter min="0" max="100" value="65"></meter>
+
+</body>
+
+<script>
+    const button = document.getElementById("button1");
+    const output = document.getElementById("output1");
+
+    button.addEventListener("click", () => {
+        output.textContent = `User ID: ${button.dataset.userId}, Role: ${button.dataset.role}`;
+    });
+
+    const openModalButton = document.getElementById("openModal");
+    const closeModalButton = document.getElementById("closeModal");
+    const modal = document.getElementById("modal");
+
+    openModalButton.addEventListener("click", () => {
+        modal.showModal();
+    });
+
+    closeModalButton.addEventListener("click", () => {
+        modal.close();
+    });
+
+    const progress = document.getElementById("progress");
+    progress.value = 70;
+</script>
+
+</html>
