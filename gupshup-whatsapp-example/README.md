@@ -95,14 +95,31 @@ curl -X POST http://localhost:8000/webhook \
   }'
 ```
 
-The webhook returns `200` immediately. The server then calls Gupshup to mark the message as read and send the reply.
+The webhook returns `200` immediately. The server then calls Gupshup to mark the message as read and send the contextual reply quoting the original message.
+
+> [!TIP]
+> You can also use [requests.http](file:///Users/johnimarangon/Projects/youtube-videos-code-examples/gupshup-whatsapp-example/requests.http) with the VS Code REST Client or IntelliJ HTTP Client extension to run all these requests directly from your editor.
+
+## Send a message directly
+
+You can also send messages (or quote an existing message) using `POST /messages`:
+
+```bash
+curl -X POST http://localhost:8000/messages \
+  -H "Content-Type: application/json" \
+  -d '{
+    "destination": "918765432109",
+    "text": "Hello world!",
+    "reply_to_message_id": "ABEGkZUTIXZ0Ago6jWqOZm-Sz0WD"
+  }'
+```
 
 ## How it works
 
 1. Gupshup POSTs an inbound message to `POST /webhook`.
 2. The webhook validates the payload and returns `200` immediately.
 3. A background task calls Gupshup to mark the message as read (blue double ticks).
-4. The background task sends `Message received` back to the sender.
+4. The background task sends `Message received` back to the sender as a contextual/quoted reply referencing the original message ID.
 
 ## Lint
 

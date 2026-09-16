@@ -1,4 +1,5 @@
 import logging
+from typing import Any
 
 import httpx
 
@@ -38,28 +39,38 @@ class GupshupClient:
         )
         response.raise_for_status()
 
-    async def send_text(self, destination: str, text: str) -> dict:
+    async def send_text(
+        self,
+        destination: str,
+        text: str,
+        reply_to_message_id: str | None = None,
+    ) -> dict:
         url = (
             f"{self._settings.gupshup_api_base_url}/wa/app/"
             f"{self._settings.gupshup_app_id}/v3/msg"
         )
+        payload: dict[str, Any] = {
+            "messaging_product": "whatsapp",
+            "recipient_type": "individual",
+            "to": destination,
+            "type": "text",
+            "text": {"body": text},
+        }
+        if reply_to_message_id:
+            payload["context"] = {"message_id": reply_to_message_id}
+
         response = await self._client.post(
             url,
             headers={
                 "apikey": self._settings.gupshup_api_key,
                 "Content-Type": "application/json",
             },
-            json={
-                "messaging_product": "whatsapp",
-                "recipient_type": "individual",
-                "to": destination,
-                "type": "text",
-                "text": {"body": text},
-            },
+            json=payload,
         )
         logger.info(
-            "send_text destination=%s status=%s body=%s",
+            "send_text destination=%s reply_to=%s status=%s body=%s",
             destination,
+            reply_to_message_id,
             response.status_code,
             response.text,
         )

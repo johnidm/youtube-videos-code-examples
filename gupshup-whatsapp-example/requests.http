@@ -1,0 +1,92 @@
+@baseUrl = http://localhost:8000
+
+### Health Check
+GET {{baseUrl}}/
+
+### Send Message (Direct Text)
+POST {{baseUrl}}/messages
+Content-Type: application/json
+
+{
+  "destination": "918765432109",
+  "text": "Hello from Gupshup integration!"
+}
+
+### Send Message (Quoted / Contextual Reply)
+POST {{baseUrl}}/messages
+Content-Type: application/json
+
+{
+  "destination": "554984269352",
+  "text": "Mensagem recebida com sucesso!",
+  "reply_to_message_id": "wamid.HBgMNTU0OTg0MjY5MzUyFQIAEhgUM0IxMDhGQzQ0RjAxMEMyRjY2REMA"
+}
+
+### Simulate Gupshup Inbound Message Webhook (v2)
+POST {{baseUrl}}/webhook
+Content-Type: application/json
+
+{
+  "app": "your_app_name",
+  "timestamp": 1718007189549,
+  "version": 2,
+  "type": "message",
+  "payload": {
+    "id": "ABEGkZUTIXZ0Ago6jWqOZm-Sz0WD",
+    "source": "918765432109",
+    "type": "text",
+    "payload": {
+      "text": "Hi, I need help with my account"
+    },
+    "sender": {
+      "phone": "918765432109",
+      "name": "Test User",
+      "country_code": "91",
+      "dial_code": "8765432109"
+    }
+  }
+}
+
+### Simulate Meta Cloud API Format Inbound Message Webhook
+POST {{baseUrl}}/webhook
+Content-Type: application/json
+
+{
+  "object": "whatsapp_business_account",
+  "entry": [
+    {
+      "id": "1234567890",
+      "changes": [
+        {
+          "field": "messages",
+          "value": {
+            "messaging_product": "whatsapp",
+            "metadata": {
+              "display_phone_number": "15551234567",
+              "phone_number_id": "9876543210"
+            },
+            "contacts": [
+              {
+                "profile": {
+                  "name": "Test User"
+                },
+                "wa_id": "918765432109"
+              }
+            ],
+            "messages": [
+              {
+                "from": "918765432109",
+                "id": "wamid.HBgLMDU1M...",
+                "timestamp": "1718007189",
+                "text": {
+                  "body": "Hello from WhatsApp!"
+                },
+                "type": "text"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

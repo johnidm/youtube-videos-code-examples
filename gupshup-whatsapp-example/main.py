@@ -13,7 +13,7 @@ from gupshup import GupshupClient
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-REPLY_TEXT = "Message received"
+REPLY_TEXT = "Mensagem recebida"
 
 
 class InboundMessage(BaseModel):
@@ -34,6 +34,7 @@ class InboundEvent(BaseModel):
 class SendMessageRequest(BaseModel):
     destination: str
     text: str
+    reply_to_message_id: str | None = None
 
 
 def extract_text_messages(data: dict[str, Any]) -> list[InboundMessage]:
@@ -97,7 +98,11 @@ def health_check():
 @app.post("/messages")
 async def send_message(request: Request, payload: SendMessageRequest):
     try:
-        return await request.app.state.gupshup.send_text(payload.destination, payload.text)
+        return await request.app.state.gupshup.send_text(
+            payload.destination,
+            payload.text,
+            reply_to_message_id=payload.reply_to_message_id,
+        )
     except httpx.HTTPError as exc:
         logger.error("Failed to send message to %s: %s", payload.destination, exc)
         raise HTTPException(
@@ -138,6 +143,10 @@ async def handle_message(gupshup: GupshupClient, message_id: str, source: str) -
         logger.error("Failed to mark message as read: %s", exc)
 
     try:
-        await gupshup.send_text(source, REPLY_TEXT)
+        await gupshup.send_text(
+            source,
+            REPLY_TEXT,
+            reply_to_message_id=message_id,
+        )
     except httpx.HTTPError as exc:
         logger.error("Failed to send reply: %s", exc)
