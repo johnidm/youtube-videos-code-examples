@@ -5,10 +5,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML5 Features</title>
+
+    <style>
+        /* Styling the native browser backdrop */
+        dialog::backdrop {
+            background-color: rgba(144, 193, 9, 0.6);
+            backdrop-filter: blur(4px);
+        }
+    </style>
 </head>
 
 <body>
     <h1>HTML5 Features</h1>
+
+    <hr>
+
+    <h2>Auto Completions</h2>
+
+    <label for="framework">Choose or type a framework:</label>
+    <input list="frameworks" id="framework" name="framework" placeholder="e.g. Next.js">
+
+    <datalist id="frameworks">
+        <option value="Next.js"></option>
+        <option value="SvelteKit"></option>
+        <option value="Nuxt.js"></option>
+        <option value="Astro"></option>
+        <option value="Remix"></option>
+    </datalist>
+
+
+    <h2>Native Modals</h2>
+
+    <button id="open-dialog" onclick="document.getElementById('dialog').showModal()">Open Modal</button>
+    <dialog id="dialog">
+        <form method="dialog">
+            <p>This is a native HTML dialog.</p>
+            <button>Close</button>
+        </form>
+    </dialog>
+
+    <h2>Accordions - Details and Summary</h2>
+
+    <details name="faq">
+        <summary>What is modern HTML?</summary>
+        <p>A living standard evolving directly inside browser engines.</p>
+    </details>
+
+    <details name="faq">
+        <summary>Do I still need JavaScript?</summary>
+        <p>Much less of it than you used to!</p>
+    </details>
+
+    <details name="faq">
+        <summary>Is this supported natively?</summary>
+        <p>Yes, across all major modern browser engines.</p>
+    </details>
+
+    <h2>The Native Popover API</h2>
+
+    <button popovertarget="mypopover">Toggle Popover</button>
+
+    <div id="mypopover" popover>
+        <p>Popover content</p>
+        <button popovertarget="mypopover" popovertargetaction="show">Open</button>
+        <button popovertarget="mypopover" popovertargetaction="hide">Close</button>
+        <button popovertarget="mypopover" popovertargetaction="toggle">Toggle</button>
+    </div>
 
     <h2>Dataset</h2>
 
